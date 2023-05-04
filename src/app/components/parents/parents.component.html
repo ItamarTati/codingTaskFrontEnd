@@ -1,0 +1,41 @@
+<div class="container">
+  <table class="parents-table" *ngIf="parentTransactions$ | async as parentTransactions; else loading">
+    <thead>
+    <tr>
+      <th>Parent ID</th>
+      <th>Sender</th>
+      <th>Receiver</th>
+      <th>Total Amount</th>
+      <th>Total Paid Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let parentTransaction of parentTransactions">
+      <td>{{ parentTransaction.id }}</td>
+      <td>{{ parentTransaction.sender }}</td>
+      <td>{{ parentTransaction.receiver }}</td>
+      <td>{{ parentTransaction.totalAmount }}</td>
+      <td>
+        <a routerLink="/child-transactions">View Child Transactions</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <mat-paginator class="pagination"
+                 [length]="7"
+                 [pageSize]="2"
+                 [disabled]="isLoading$ | async"
+                 [showFirstLastButtons]="true"
+                 aria-label="Select page"
+                 (page)="pageChanged($event)"
+  >
+  </mat-paginator>
+</div>
+
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+    <p  class="loading-text">Loading Translations</p>
+  </div>
+</ng-template>
