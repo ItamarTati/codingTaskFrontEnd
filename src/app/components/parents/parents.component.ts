@@ -3,6 +3,8 @@ import { GetParentsAndChildrenService, ParentTransaction } from '../../services/
 import { Observable, BehaviorSubject  } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-parents',
@@ -15,13 +17,14 @@ export class ParentsComponent implements OnInit {
   public parentTransactions$: Observable<ParentTransaction[]> | undefined;
   public isLoading$ = new BehaviorSubject<boolean>(true);
 
-  constructor(private readonly parentService: GetParentsAndChildrenService) { }
+  constructor(private readonly parentService: GetParentsAndChildrenService,
+  private readonly router: Router) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getParentTransactions();
   }
 
-  getParentTransactions(currentPage: number = 1): void {
+  private getParentTransactions(currentPage: number = 1): void {
     this.isLoading$.next(true)
     this.parentTransactions$ = this.parentService.getParentTransactions(currentPage).pipe(
       tap(() => this.isLoading$.next(false))
@@ -72,10 +75,5 @@ export class ParentsComponent implements OnInit {
   private lastPage(): void {
     this.currentPage = 4;
     this.getParentTransactions(this.currentPage);
-  }
-
-
-  viewChildTransactions(parentId: number): void {
-    // navigate to child component to display child transactions
   }
 }

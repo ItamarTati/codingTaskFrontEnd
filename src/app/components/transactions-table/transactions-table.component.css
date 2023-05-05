@@ -1,0 +1,93 @@
+.parents-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 24px;
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #ddd;
+  width: 100%
+}
+
+.parents-table th {
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding: 12px;
+  background-color: #f2f2f2;
+}
+
+.parents-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.parents-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.parents-table td:last-child {
+  position: relative;
+}
+
+.view-child-transactions {
+  background-color: #0096c7;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.view-child-transactions:hover {
+  background-color: #0375b4;
+}
+
+.children-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 24px;
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.children-table th {
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding: 12px;
+  background-color: #f2f2f2;
+}
+
+.children-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.children-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.go-back-button {
+  background-color: #0096c7;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 24px;
+}
+
+.go-back-button:hover {
+  background-color: #0375b4;
+}

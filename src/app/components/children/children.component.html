@@ -1,1 +1,13 @@
-<p>children works!</p>
+<div class="container">
+  <ng-container *ngIf="childTransactions$ | async as childTransactions; else loading">
+    <app-transactions-table [childTransactions]="childTransactions">
+
+    </app-transactions-table>
+  </ng-container>
+  <button mat-raised-button color="primary" [routerLink]="['']" class="go-back-button">Go back to Parent Transactions</button>
+</div>
+
+
+<ng-template #loading>
+  <app-loading-spinner loadingMessage="Loading Children Transactions"></app-loading-spinner>
+</ng-template>

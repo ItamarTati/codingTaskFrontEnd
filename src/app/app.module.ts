@@ -9,12 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetParentsAndChildrenService } from './services/get-parents-and-children.service'
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParentsComponent,
-    ChildrenComponent
+    ChildrenComponent,
+    TransactionsTableComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [ GetParentsAndChildrenService ],
   bootstrap: [AppComponent]
