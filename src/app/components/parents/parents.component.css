@@ -1,3 +1,24 @@
+/* The title class is used to style the title of the webpage. The color property sets the color of the text to white. The font-size property sets the size of the text to 24px. 
+The font-weight property sets the weight of the text to bold. The margin-bottom property adds space between the title and the element below it. The text-align property centers the title.
+
+The container class is used to set the height and width of the main container element of the webpage. The height property sets the height of the container to 100% of the viewport height. 
+The width property sets the width of the container to 100% of the available width. The display property is set to flex to enable flexbox layout. The flex-direction property is set to 
+column to stack the child elements vertically. The flex-wrap property is set to nowrap to prevent wrapping of child elements. The justify-content property is set to center to align the 
+child elements along the vertical axis. The align-items property is set to stretch to stretch the child elements along the horizontal axis.
+
+The @media rule is used to apply styles based on the screen size. The screen and (min-width: 1400px) media query is used to apply styles to screens with a minimum width of 1400px. 
+In this case, the container class is given a fixed width of 1370px and centered on the screen using the margin property.
+
+The pagination class is used to display pagination links and set their alignment to the center. The display property is set to flex to enable flexbox layout. 
+The justify-content property is set to center to align the child elements along the horizontal axis. */
+
+.title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 .container{
   height: 100vh;
   width: 100%;

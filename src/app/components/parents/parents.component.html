@@ -1,4 +1,5 @@
 <div class="container">
+  <h1 class="title">Parent Transactions</h1>
   <div *ngIf="parentTransactions$ | async as parentTransactions; else loading">
     <app-transactions-table [parentTransactions]="parentTransactions">
 

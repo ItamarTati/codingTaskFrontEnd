@@ -1,8 +1,9 @@
 <div class="container">
+    <h1 class="title">Parent's Transactions for Children</h1>
   <ng-container *ngIf="childTransactions$ | async as childTransactions; else loading">
     <app-transactions-table [childTransactions]="childTransactions">
-
     </app-transactions-table>
+    <p class="no-transactions" *ngIf="!childTransactions.length">This Parent Currently has no Transactions</p>
   </ng-container>
   <button mat-raised-button color="primary" [routerLink]="['']" class="go-back-button">Go back to Parent Transactions</button>
 </div>

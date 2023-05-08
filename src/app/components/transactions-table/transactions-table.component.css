@@ -1,3 +1,28 @@
+/* 
+The code defines the CSS styles for a table with two different formats: "parents-table" and "children-table".
+
+For the "parents-table" style, the table has a collapsed border, a font size of 12px and a line height of 24px. 
+The background color is a light grey (#f9f9f9), with a font color of dark grey (#333). The table has a border of 
+1px solid light grey (#ddd) and takes up the full width of its container. The table header cells ("th") are bolded 
+with centered text, have a 2px solid light grey (#ddd) border at the bottom, and have a light grey background color (#f2f2f2). 
+The table data cells ("td") have a 1px solid light grey (#ddd) border at the bottom and centered text. Every other row in the table ("tr:nth-child(even)") 
+has a white background color (#fff). The last cell ("td:last-child") has a relative position.
+
+For the "view-child-transactions" style, the button has a blue background color (#0096c7), no border, and white text color (#fff). 
+The button padding is 8px on the top and bottom, and 16px on the left and right. The cursor changes to a pointer on hover. The font size is 14px with a line height of 24px, 
+and the button has a border radius of 4px. The button transitions smoothly between background colors over 0.2 seconds. On hover, the background color 
+changes to a darker shade of blue (#0375b4).
+
+For the "children-table" style, the table has a collapsed border, a font size of 12px and a line height of 24px. The background color is a 
+light grey (#f9f9f9), with a font color of dark grey (#333). The table has a border of 1px solid light grey (#ddd) and takes up the full width of its container. 
+The table header cells ("th") are bolded with centered text, have a 2px solid light grey (#ddd) border at the bottom, and have a light grey background color (#f2f2f2). 
+The table data cells ("td") have a 1px solid light grey (#ddd) border at the bottom and centered text. 
+Every other row in the table ("tr:nth-child(even)") has a white background color (#fff). The table is separated from the previous element with a margin of 24px.
+
+For the "go-back-button" style, the button has a blue background color (#0096c7), no border, and white text color (#fff). 
+The button padding is 8px on the top and bottom, and 16px on the left and right. The cursor changes to a pointer on hover. The font size is 14px with a line height of 24px, 
+and the button has a border radius of 4px. The button transitions smoothly between background colors over 0.2 seconds. The button has a margin of 24px at the top of 
+the element it is contained within. On hover, the background color changes to a darker shade of blue (#0375b4). */
 .parents-table {
   border-collapse: collapse;
   font-size: 12px;

@@ -1,41 +1,41 @@
 <div class="container">
   <table class="parents-table" *ngIf="parentTransactions && parentTransactions.length">
     <thead>
-    <tr>
-      <th>Parent ID</th>
-      <th>Sender</th>
-      <th>Receiver</th>
-      <th>Total Amount</th>
-      <th>Total Paid Amount</th>
-    </tr>
+      <tr>
+        <th>Parent ID</th>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Total Amount</th>
+        <th>Total Paid Amount</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let parentTransaction of parentTransactions">
-      <td>{{ parentTransaction.id }}</td>
-      <td>{{ parentTransaction.sender }}</td>
-      <td>{{ parentTransaction.receiver }}</td>
-      <td>{{ parentTransaction.totalAmount }}</td>
-      <td>
-        <a [routerLink]="['/children', parentTransaction.id]">View Child Transactions</a>
-      </td>
-    </tr>
+      <tr *ngFor="let parentTransaction of parentTransactions">
+        <td>{{ parentTransaction.id }}</td>
+        <td>{{ parentTransaction.sender }}</td>
+        <td>{{ parentTransaction.receiver }}</td>
+        <td>{{ parentTransaction.totalAmount }}</td>
+        <td>
+          <a [routerLink]="['/children', parentTransaction.id]">View Child Transactions</a>
+        </td>
+      </tr>
     </tbody>
   </table>
 
   <table class="children-table" *ngIf="childTransactions && childTransactions.length">
     <thead>
-    <tr>
-      <th>Child ID</th>
-      <th>Parent ID</th>
-      <th>Paid Amount</th>
-    </tr>
+      <tr>
+        <th>Child ID</th>
+        <th>Parent ID</th>
+        <th>Paid Amount</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let childTransaction of childTransactions">
-      <td>{{ childTransaction.id }}</td>
-      <td>{{ childTransaction.parentId }}</td>
-      <td>{{ childTransaction.paidAmount }}</td>
-    </tr>
+      <tr *ngFor="let childTransaction of childTransactions">
+        <td>{{ childTransaction.id }}</td>
+        <td>{{ childTransaction.parentId }}</td>
+        <td>{{ childTransaction.paidAmount }}</td>
+      </tr>
     </tbody>
   </table>
 </div>

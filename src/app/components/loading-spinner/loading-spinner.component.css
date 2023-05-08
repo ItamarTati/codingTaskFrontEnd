@@ -1,3 +1,7 @@
+/* The .spinner-container CSS class is used to center the spinner component vertically and horizontally within the container using display: flex, justify-content, and align-items. 
+The height of the container is set to 20% of the viewport height using height: 20vh, and margin: 0 auto is used to center the container horizontally within its parent element.
+
+The .loading-text class is used to set the text color to white, which is used to display the loading message. */
 .spinner-container {
   display: flex;
   flex-direction: column;

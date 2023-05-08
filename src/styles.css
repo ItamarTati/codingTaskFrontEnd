@@ -1,4 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    background-color: black
+}
+/* This code sets the background color of the HTML and 
+body elements to black, and sets the height of the HTML and body 
+elements to 100%. This ensures that the background color covers 
+the entire visible area of the screen.*/
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; background-color: black}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* The margin: 0 rule removes any default margin on the body element, 
+which helps to make sure that the content of the page is 
+aligned properly. The font-family: Roboto, "Helvetica Neue", 
+sans-serif rule specifies a fallback font stack for the body text. 
+If the primary font, Roboto, is not available on the user's system, it 
+will fall back to the next font in the stack, Helvetica Neue, and so on. */

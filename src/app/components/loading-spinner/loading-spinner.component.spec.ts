@@ -11,13 +11,22 @@ describe('LoadingSpinnerComponent', () => {
       declarations: [ LoadingSpinnerComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(LoadingSpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display the loading message', () => {
+    component.loadingMessage = 'Loading data...';
+    fixture.detectChanges();
+    const loadingText = fixture.nativeElement.querySelector('.loading-text');
+    expect(loadingText.textContent).toContain('Loading data...');
   });
 });

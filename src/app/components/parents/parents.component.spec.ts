@@ -1,64 +1,110 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { GetParentsAndChildrenService, ParentTransaction } from '../../services/get-parents-and-children.service';
+
+import { ApiService, ParentTransaction } from '../../services/api.service';
 import { ParentsComponent } from './parents.component';
 
 describe('ParentsComponent', () => {
   let component: ParentsComponent;
   let fixture: ComponentFixture<ParentsComponent>;
-  let mockParentService: jasmine.SpyObj<GetParentsAndChildrenService>;
+  let apiService: ApiService;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ParentsComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatPaginatorModule,
+      ],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    mockParentService = jasmine.createSpyObj(['getParentTransactions']);
-
-    TestBed.configureTestingModule({
-      declarations: [ParentsComponent],
-      imports: [MatPaginatorModule, MatProgressSpinnerModule],
-      providers: [{ provide: GetParentsAndChildrenService, useValue: mockParentService }],
-    }).compileComponents();
-
     fixture = TestBed.createComponent(ParentsComponent);
     component = fixture.componentInstance;
-  });
-
-  it('should display loading spinner when loading', () => {
-    mockParentService.getParentTransactions.and.returnValue(of([]));
-    component.isLoading$.next(true);
+    apiService = TestBed.inject(ApiService);
     fixture.detectChanges();
-    const spinner = fixture.debugElement.query(By.css('.spinner-container'));
-    expect(spinner).toBeTruthy();
   });
 
-  it('should not display loading spinner when not loading', () => {
-    mockParentService.getParentTransactions.and.returnValue(of([]));
-    component.isLoading$.next(false);
-    fixture.detectChanges();
-    const spinner = fixture.debugElement.query(By.css('.spinner-container'));
-    expect(spinner).toBeFalsy();
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should display parent transactions when not loading', () => {
+  it('should initialize current page to 1', () => {
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should set loading status to true on initialization', () => {
+    expect(component.isLoading$.getValue()).toBe(true);
+  });
+
+  it('should fetch parent transactions on initialization', () => {
     const parentTransactions: ParentTransaction[] = [
-      { id: 1, sender: 'Alice', receiver: 'Bob', totalAmount: 100 },
-      { id: 2, sender: 'Charlie', receiver: 'David', totalAmount: 200 },
+      { id: 1, sender: 'Parent 1', receiver: 'Receiver 1', totalAmount: 100 },
+      { id: 2, sender: 'Parent 2', receiver: 'Receiver 2', totalAmount: 200 },
     ];
-    mockParentService.getParentTransactions.and.returnValue(of(parentTransactions));
-    component.isLoading$.next(false);
-    fixture.detectChanges();
-    const rows = fixture.debugElement.queryAll(By.css('.parents-table tbody tr'));
-    expect(rows.length).toBe(2);
-    expect(rows[0].nativeElement.textContent).toContain('1');
-    expect(rows[1].nativeElement.textContent).toContain('Charlie');
+    spyOn(apiService, 'getParentTransactions').and.returnValue(
+      of(parentTransactions)
+    );
+    component.ngOnInit();
+    expect(component.parentTransactions$).toBeDefined();
+    component.parentTransactions$?.subscribe((transactions) => {
+      expect(transactions).toEqual(parentTransactions);
+    });
   });
 
-  it('should call getParentTransactions with correct page number when pageChanged event is emitted', () => {
-    mockParentService.getParentTransactions.and.returnValue(of([]));
-    const event = { pageIndex: 2 } as any;
-    spyOn(component, 'getParentTransactions');
+  it('should fetch first page of parent transactions', () => {
+    spyOn(apiService, 'getParentTransactions').and.returnValue(of([]));
+    component.firstPage();
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should fetch next page of parent transactions', () => {
+    spyOn(apiService, 'getParentTransactions').and.returnValue(of([]));
+    component.currentPage = 2;
+    component.nextPage();
+    expect(component.currentPage).toBe(3);
+  });
+
+  it('should fetch previous page of parent transactions', () => {
+    spyOn(apiService, 'getParentTransactions').and.returnValue(of([]));
+    component.currentPage = 2;
+    component.prevPage();
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should not fetch previous page of parent transactions when on first page', () => {
+    spyOn(apiService, 'getParentTransactions').and.returnValue(of([]));
+    component.currentPage = 1;
+    component.prevPage();
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should fetch last page of parent transactions', () => {
+    spyOn(apiService, 'getParentTransactions').and.returnValue(of([]));
+    component.lastPage();
+    expect(component.currentPage).toBe(4);
+  });
+
+  it('should handle page change event from paginator', () => {
+    spyOn(component, 'firstPage');
+    spyOn(component, 'lastPage');
+    spyOn(component, 'nextPage');
+    spyOn(component, 'prevPage');
+    const event = {
+      pageIndex: 0,
+      previousPageIndex: undefined,
+      length: 7,
+      pageSize: 2,
+    };
     component.pageChanged(event);
-    expect(component.getParentTransactions).toHaveBeenCalledWith(3);
+    expect(component.firstPage).toHaveBeenCalled();
+    expect(component.lastPage).not.toHaveBeenCalled();
+    expect(component.nextPage).not.toHaveBeenCalled();
+    expect(component.prevPage).not.toHaveBeenCalled();
   });
 });
