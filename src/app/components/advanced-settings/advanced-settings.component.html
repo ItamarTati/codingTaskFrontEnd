@@ -1,3 +1,5 @@
+<!--This code creates an accordion component using the Angular Material library. The accordion panel has a title and a description, and it contains a radio group with two radio buttons, one for ascending sort order and one for descending sort order. When a radio button is clicked, a corresponding method is called to update the sort order direction. The state of the accordion panel is also tracked using the panelOpenState variable, which is updated when the panel is opened or closed.-->
+
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>

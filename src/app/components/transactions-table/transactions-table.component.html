@@ -1,3 +1,12 @@
+<!--This code is a template that displays the parent and child transactions in two different tables inside a container div.-->
+
+<!--The first table displays the parent transactions, which includes the parent ID, sender, receiver, total amount, and total paid amount. It uses *ngFor directive to loop through an array of parentTransaction objects and display their properties in the corresponding columns of the table. The routerLink attribute on the last column enables the user to view the child transactions associated with the parent transaction by clicking the link.-->
+
+<!--The second table displays the child transactions associated with the selected parent transaction. It only appears when there is an array of childTransactions objects to display. It includes the child ID, parent ID, and paid amount. It also uses the *ngFor directive to loop through an array of childTransaction objects and display their properties in the corresponding columns of the table.-->
+
+<!--Only one Table is displayed at a time -->
+
+<!--The use of conditional rendering with *ngIf ensures that each table only appears when there is data to display, and not when the corresponding array is empty.-->
 <div class="container">
   <table class="parents-table" *ngIf="parentTransactions && parentTransactions.length">
     <thead>

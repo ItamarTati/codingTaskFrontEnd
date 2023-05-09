@@ -1,3 +1,6 @@
+<!--This code defines a component to display transactions of children under a parent. It includes an Angular template that consists of an HTML container element with a title and a button to go back to the parent's transactions, and a loading spinner to indicate when data is being loaded. It also includes an ng-container directive, which is used to create a template section that can be populated with childTransaction data asynchronously, using the Angular async pipe. If there are no child transactions, it displays a message indicating that there are no transactions.-->
+
+<!--Overall, this code is designed to provide a user-friendly interface for browsing the transactions of children under a parent, and includes error-handling features such as a loading spinner and a message indicating when there are no transactions to display.-->
 <div class="container">
     <h1 class="title">Parent's Transactions for Children</h1>
   <ng-container *ngIf="childTransactions$ | async as childTransactions; else loading">

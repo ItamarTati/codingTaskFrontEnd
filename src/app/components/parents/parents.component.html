@@ -1,3 +1,11 @@
+<!--This is a component template that displays a table of parent transactions, along with pagination and advanced sorting settings.-->
+
+<!--The div element wraps around the table and the paginator, and contains a header with a title. Inside the div, there is an ngIf statement that checks if the parentTransactions$ observable has emitted a value. If there is a value, the app-transactions-table component is rendered, passing in the parentTransactions as an input. Otherwise, the loading template is rendered, displaying a loading spinner component.-->
+
+<!--Below the table and paginator, there is a mat-paginator component, which sets up pagination for the table. It has a page event that is emitted when the user clicks on a page, which is handled by the pageChanged method.-->
+
+<!--Finally, there is an app-advanced-settings component, which allows the user to change the sort order of the table by emitting an event with the new sort direction. The event is handled by the changeOrder method.-->
+
 <div class="container">
   <h1 class="title">Parent Transactions</h1>
   <div *ngIf="parentTransactions$ | async as parentTransactions; else loading">
