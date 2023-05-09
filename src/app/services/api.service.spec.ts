@@ -1,6 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ApiService, ParentTransaction, ChildTransactions } from './api.service';
+import { Direction } from './api.service'
 
 describe('ApiService', () => {
   let apiService: ApiService;
@@ -27,7 +28,7 @@ describe('ApiService', () => {
         { id: 2, sender: 'sender2', receiver: 'receiver2', totalAmount: 200 },
       ];
 
-      apiService.getParentTransactions(1).subscribe((parentTransactions) => {
+      apiService.getParentTransactions(1, Direction.ASCENDING).subscribe((parentTransactions) => {
         expect(parentTransactions.length).toBe(2);
         expect(parentTransactions).toEqual(dummyParentTransactions);
       });
@@ -40,7 +41,7 @@ describe('ApiService', () => {
     it('should handle errors properly', () => {
       const errorMessage = '404 Not Found';
 
-      apiService.getParentTransactions(1).subscribe(
+      apiService.getParentTransactions(1, Direction.ASCENDING).subscribe(
         () => fail('should have failed with the 404 error'),
         (error) => {
           expect(error.status).toEqual(404);

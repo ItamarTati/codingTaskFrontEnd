@@ -2,7 +2,6 @@
   <h1 class="title">Parent Transactions</h1>
   <div *ngIf="parentTransactions$ | async as parentTransactions; else loading">
     <app-transactions-table [parentTransactions]="parentTransactions">
-
     </app-transactions-table>
   </div>
   <mat-paginator class="pagination"
@@ -14,6 +13,7 @@
                  (page)="pageChanged($event)"
   >
   </mat-paginator>
+  <app-advanced-settings (parentIdOrder)="changeOrder($event)"></app-advanced-settings>
 </div>
 
 

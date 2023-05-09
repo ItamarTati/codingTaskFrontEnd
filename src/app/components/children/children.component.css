@@ -8,15 +8,15 @@ The .no-transactions class defines the style for a message that is displayed whe
 and centers it vertically and horizontally within the container.
 
 Finally, the button selector sets the style for all buttons in the component, including the maximum width, display, and margin. The button is centered horizontally within the container. */
-  
-  .title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-.container{
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.container {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -29,7 +29,7 @@ Finally, the button selector sets the style for all buttons in the component, in
 @media screen and (min-width: 1400px) {
   .container {
     width: 1370px;
-    margin: 0 auto
+    margin: 0 auto;
   }
 }
 
@@ -40,7 +40,6 @@ Finally, the button selector sets the style for all buttons in the component, in
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 button {

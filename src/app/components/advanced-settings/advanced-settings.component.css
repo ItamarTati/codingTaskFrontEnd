@@ -1,0 +1,18 @@
+/* The Material Design accordion component is made up of a series of expansion
+panels that can be opened and closed by clicking on their header.
+Each expansion panel has a border radius applied to its top corners,
+which gives it a rounded appearance. However, when the first expansion panel is opened,
+the border radius on its top corners clashes with the border radius of the accordion
+container, causing a visual issue. To fix this, we can remove the border radius on
+the top-right and top-left corners of the first expansion panel using
+the :first-of-type selector. This selector targets only the first expansion panel in
+the accordion container, ensuring that the border radius is removed only from the
+first panel and not from the other panels. In summary, the code snippet is a targeted
+solution that removes the border radius on the top corners of the first expansion panel
+in a Material Design accordion component, preventing a visual issue when the first panel is opened. */
+
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}

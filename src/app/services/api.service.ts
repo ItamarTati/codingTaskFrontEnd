@@ -23,14 +23,19 @@ export interface ChildTransactions {
   paidAmount: number;
 }
 
+export enum Direction {
+  ASCENDING = 'asc',
+  DESCENDING = 'desc'
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  getParentTransactions(page: number): Observable<ParentTransaction[]> {
-    const url = `https://codingtask-production.up.railway.app/parents?page=${page}`;
+  getParentTransactions(page: number, direction: Direction): Observable<ParentTransaction[]> {
+    const url = `https://codingtask-production.up.railway.app/parents?page=${page}&sortOrder=${direction}`;
     return this.http.get<ParentTransaction[]>(url).pipe(
       catchError((error) => {
         console.log('Error:', error);

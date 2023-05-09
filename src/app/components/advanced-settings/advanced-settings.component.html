@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Open Advanced Settings
+      </mat-panel-title>
+      <mat-panel-description>
+        Sort Order
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-radio-group [(ngModel)]="direction">
+      <mat-radio-button value="asc" (click)="onOrderChangeAscending()">Ascending</mat-radio-button>
+      <mat-radio-button value="desc" (click)="onOrderChangeDescending()">Descending</mat-radio-button>
+    </mat-radio-group>
+  </mat-expansion-panel>
+</mat-accordion>

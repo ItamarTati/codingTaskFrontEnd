@@ -13,6 +13,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { AdvancedSettingsComponent } from './components/advanced-settings/advanced-settings.component';
 
 @NgModule({
   // Declare components and modules
@@ -22,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     ChildrenComponent,
     TransactionsTableComponent,
     LoadingSpinnerComponent,
+    AdvancedSettingsComponent,
   ],
   // Import necessary modules
   imports: [
@@ -31,7 +36,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule,
+    MatRadioModule,
+    FormsModule
   ],
   // Provide necessary services
   providers: [ApiService],
